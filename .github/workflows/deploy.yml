@@ -3,11 +3,19 @@ name: Laravel Deploy
 on:
   push:
     branches:
-      - main
+      - main          # Direct push ya PR merge dono pe chalega
+  pull_request:
+    types:
+      - closed        # PR close hone pe check karo
+    branches:
+      - main          # Sirf main ke liye
 
 jobs:
   deploy:
-    runs-on: self-hosted  # Tumhari local machine pe chalega
+    runs-on: self-hosted
+    
+    # Sirf tab deploy karo jab PR actually merge hua ho
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
 
     steps:
       - name: Code Checkout
