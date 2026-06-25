@@ -1,0 +1,25 @@
+name: Laravel Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted  # Tumhari local machine pe chalega
+
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
+
+      - name: PHP Version Check
+        run: php --version
+
+      - name: Deploy Script Chalao
+        run: |
+          cd /var/www/html/myapp
+          bash deploy.sh
+
+      - name: Success Message
+        run: echo "✅ Laravel Deploy Ho Gaya!"
