@@ -9,11 +9,11 @@ cd /var/www/html/myapp
 git pull origin main
 
 # Composer dependencies
-composer install --no-dev --optimize-autoloader
+# composer install --no-dev --optimize-autoloader
 
 # NPM build (agar frontend hai)
-npm install
-npm run build
+# npm install
+# npm run build
 
 # Laravel commands
 php artisan migrate --force
@@ -21,8 +21,5 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
-# Permissions fix
-sudo chown -R www-data:www-data /var/www/html/myapp
-sudo chmod -R 775 storage bootstrap/cache
 
 echo "✅ Deploy complete!"
